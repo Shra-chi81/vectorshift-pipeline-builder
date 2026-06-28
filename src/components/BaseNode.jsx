@@ -1,6 +1,4 @@
 // components/BaseNode.jsx
-// --------------------------------------------------
-// Shared node shell used by every node type in the pipeline builder.
 
 import { Handle, Position } from 'reactflow';
 import { getNodeColor } from '../constants/nodeColors';
