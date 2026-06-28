@@ -1,0 +1,211 @@
+/* components/BaseNode.css */
+/* -------------------------------------------------- */
+/* Modern node card styling. Each node sets --node-accent and
+   --node-accent-soft inline (from constants/nodeColors.js) — that's
+   the per-node-type theme. Everything else (background, text,
+   borders) reads from the light/dark variables defined in
+   index.css, so toggling the app theme repaints every node without
+   touching this file. */
+
+.base-node {
+  position: relative;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  box-shadow:
+    0 1px 2px var(--shadow-color),
+    0 8px 24px var(--shadow-color);
+  color: var(--text-secondary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 13px;
+  padding-bottom: 12px;
+  transition: box-shadow 0.18s ease, transform 0.18s ease, border-color 0.18s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.base-node:hover {
+  border-color: var(--node-accent);
+  box-shadow:
+    0 1px 2px var(--shadow-color),
+    0 10px 28px var(--shadow-color),
+    0 0 0 1px var(--node-accent-soft);
+  transform: translateY(-1px);
+}
+
+.react-flow__node.selected .base-node {
+  border-color: var(--node-accent);
+  box-shadow: 0 0 0 2px var(--node-accent-soft), 0 8px 24px var(--shadow-color);
+}
+
+.base-node__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border-subtle);
+  border-radius: 12px 12px 0 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.03), transparent);
+}
+
+.base-node__icon-chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: var(--node-accent-soft);
+  color: var(--node-accent);
+  flex-shrink: 0;
+}
+
+.base-node__title {
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.01em;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.base-node__content {
+  padding: 10px 14px 0 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Handles */
+.base-node__handle {
+  width: 10px !important;
+  height: 10px !important;
+  border: 2px solid var(--bg-surface) !important;
+  background: var(--node-accent) !important;
+  transition: transform 0.15s ease, border-color 0.2s ease;
+}
+
+.base-node__handle:hover {
+  transform: scale(1.25);
+}
+
+.base-node__handle-labels {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  pointer-events: none;
+}
+
+.base-node__handle-labels--left {
+  left: 10px;
+}
+
+.base-node__handle-labels--right {
+  right: 10px;
+}
+
+.base-node__handle-label {
+  position: absolute;
+  transform: translateY(-50%);
+  font-size: 10px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  background: var(--bg-surface);
+  padding: 0 4px;
+}
+
+.base-node__handle-labels--left .base-node__handle-label {
+  left: 0;
+}
+
+.base-node__handle-labels--right .base-node__handle-label {
+  right: 0;
+}
+
+/* Shared form control styling so every node's inputs/selects/textareas
+   look consistent without each node file writing its own styles. */
+.base-node__field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 100%;
+}
+
+.base-node__field-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.base-node__description {
+  margin: 0;
+  font-size: 11px;
+  color: var(--text-faint);
+  line-height: 1.4;
+}
+
+.base-node__input,
+.base-node__select,
+.base-node__textarea {
+ background: var(--bg-input);
+  border: 1px solid var(--border-input);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  padding: 6px 8px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.2s ease, color 0.2s ease;
+  resize: none;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.base-node__textarea {
+  overflow: hidden;
+  line-height: 1.4;
+}
+
+.base-node__textarea--auto {
+  min-height: 32px;
+}
+
+.base-node__input:focus,
+.base-node__select:focus,
+.base-node__textarea:focus {
+  border-color: var(--node-accent);
+  box-shadow: 0 0 0 2px var(--node-accent-soft);
+}
+
+.base-node__select option {
+  background: #1A2030;
+  color: #E5E9F0;
+  
+}
+
+[data-theme='light'] .base-node__select option {
+  background: #FFFFFF;
+  color: #1E293B;
+}
+
+[data-theme='light'] .base-node__field-label {
+  color: #334155;
+}
+
+[data-theme='light'] .base-node__title {
+  color: #0F172A;
+}
+
+[data-theme='light'] .base-node__description {
+  color: #475569;
+}
+
+[data-theme='light'] .base-node__input,
+[data-theme='light'] .base-node__select,
+[data-theme='light'] .base-node__textarea {
+  color: #1E293B;
+  background: #FFFFFF;
+  border-color: #CBD5E1;
+}

@@ -1,0 +1,128 @@
+/* toolbar.css */
+/* -------------------------------------------------- */
+
+.pipeline-toolbar {
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-subtle);
+  box-shadow: 0 4px 16px var(--shadow-color);
+  padding: 14px 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.pipeline-toolbar__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.pipeline-toolbar__brand {
+  color: var(--text-secondary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.pipeline-toolbar__subtitle {
+  color: var(--text-faint);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 11px;
+}
+
+.pipeline-toolbar__nodes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-content: flex-start;
+  align-items: center;
+}
+
+
+.draggable-node {
+  --chip-accent: #94A3B8;
+  --chip-accent-soft: rgba(148, 163, 184, 0.14);
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: grab;
+  user-select: none;
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, color 0.22s ease;
+}
+
+.draggable-node:hover {
+  border-color: var(--chip-accent);
+  background: var(--chip-accent-soft);
+  color: var(--chip-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.draggable-node:hover .draggable-node__icon {
+  color: var(--text-primary);
+}
+
+.draggable-node:active {
+  transform: scale(0.96);
+}
+
+.draggable-node:focus-visible {
+  outline: 2px solid var(--chip-accent);
+  outline-offset: 2px;
+}
+
+.draggable-node--dragging {
+  cursor: grabbing;
+  opacity: 0.6;
+  transform: scale(0.97);
+}
+
+.draggable-node__icon {
+  display: flex;
+  align-items: center;
+  color: var(--chip-accent);
+  transition: color 0.22s ease;
+}
+
+.pipeline-toolbar__theme-toggle {
+  display: flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+}
+
+.pipeline-toolbar__theme-toggle:hover {
+  border-color: var(--text-muted);
+  transform: translateY(-2px);
+}
+
+.pipeline-toolbar__theme-toggle:active {
+  transform: scale(0.96);
+}
+
+.pipeline-toolbar__theme-toggle:focus-visible {
+  outline: 2px solid var(--text-muted);
+  outline-offset: 2px;
+}
